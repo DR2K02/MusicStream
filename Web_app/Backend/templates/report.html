@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Your Monthly Creator Report</title>
+    <style>
+        .report-page {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        
+        .report-heading {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .report-data {
+            font-size: 16px;
+            color: #333;
+        }
+        
+        .no-report {
+            text-align: center;
+            color: #666;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="report-page">
+        <h1 class="report-heading">Monthly Creator Report</h1>
+        <div class="report-data">
+            <h2>Albums Created:</h2>
+            <ul>
+                {% for album in formatted_report_data.albums_created %}
+                    <li>
+                        <p><strong>Album Name:</strong> {{ album.album_name }}</p>
+                        <p><strong>Album Artist:</strong> {{ album.album_artist }}</p>
+                        <p><strong>Songs:</strong></p>
+                        <ul>
+                            {% for song in album.songs %}
+                                <li>
+                                    <p><strong>Song Name:</strong> {{ song.song_name }}</p>
+                                    <p><strong>Lyrics:</strong> {{ song.lyrics }}</p>
+                                    <p><strong>Genre:</strong> {{ song.genre }}</p>
+                                    <p><strong>Duration:</strong> {{ song.duration }}</p>
+                                    <p><strong>Date Created:</strong> {{ song.date_created }}</p>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+            <!-- Add more relevant data as needed -->
+        </div>
+    </div>
+</body>
+</html>
